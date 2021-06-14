@@ -8,4 +8,5 @@ Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
         Route::get('/', [PageController::class, 'index'])
-  
+            ->name('index');
+    });
