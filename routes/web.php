@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\Userpanel\PageController;
+use App\Models\ServiceMenu;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::as('userpanel.')
+    ->group(function () {
+        Route::get('/', [PageController::class, 'home'])->name('home');
+        Route::get('/s/{slug}', [PageController::class, 'service'])->name('service');
+    });
+
+Route::post('/upload', [ImageController::class, 'store'])
+    ->name('image.store');
+
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
