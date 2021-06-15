@@ -54,9 +54,17 @@ $serviceCategories = \App\Models\ServiceCategory::with('serviceSubCategories')->
                     </button>
                     <ul class="dropdown-menu">
                         <li>
+                            @guest
                             <a class="dropdown-item" href="{{ route('login') }}">
                                 Login
                             </a>
+                            @endguest
+
+                            @auth
+                            <a class="dropdown-item" href="{{ route('login') }}">
+                                Profile
+                            </a>
+                            @endauth
                         </li>
                     </ul>
                 </div>

@@ -33,6 +33,8 @@ Route::as('userpanel.')
 Route::post('/upload', [ImageController::class, 'store'])
     ->name('image.store');
 
-
-require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
