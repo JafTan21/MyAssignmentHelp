@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Adminpanel\StorePageRequest;
+use App\Http\Requests\Adminpanel\UpdatePageRequest;
 use App\Models\Page;
 use App\Models\ServiceCategory;
 use App\Models\ServiceSubCategory;
@@ -37,16 +39,9 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePageRequest $request)
     {
-        Page::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'slug' => $request->slug,
-            'content' => $request->page,
-            'main_category_id' => $request->serviceCategory,
-            'sub_category_id' => $request->serviceSubCategory,
-        ]);
+        Page::create($request->validated());
 
         return redirect()
             ->route('admin.page.index')
@@ -83,17 +78,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePageRequest $request, Page $page)
     {
-        $page = Page::where('id', $id)->firstOrFail();
-        $page->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'slug' => $request->slug,
-            'content' => $request->page,
-            'main_category_id' => $request->serviceCategory,
-            'sub_category_id' => $request->serviceSubCategory,
-        ]);
+        $page->update($request->validated());
 
         return redirect()
             ->route('admin.page.index')

@@ -9,11 +9,21 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body" style="display: {{ $is_collapsed ? 'none':'' }};">
-            <label for="" class="">New service sub category</label>
+
+            @if ($error)
+            <div class="alert alert-danger text-sm">
+                {{ $error }}
+            </div>
+            @endif
+
+            <label for="" class="">Name</label>
             <input type="text" class="form-control" wire:model.500ms="name"
                 {{ is_null($serviceCategoryId) ? 'disabled':'' }}>
+            <label for="" class="">Slug</label>
+            <input type="text" class="form-control" wire:model.500ms="slug"
+                {{ is_null($serviceCategoryId) ? 'disabled':'' }}>
             <button class="btn btn-success btn-sm" wire:click="saveNewSubServiceCategory"
-                {{ $name==''?'disabled':'' }}>Save</button>
+                {{ $name=='' || $slug=='' ?'disabled':'' }}>Save</button>
         </div>
         <!-- /.card-body -->
     </div>

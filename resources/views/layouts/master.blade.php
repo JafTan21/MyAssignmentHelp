@@ -26,9 +26,12 @@
         type="text/css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
     </script>
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}" class="">
 </head>
 
 <body>
+
+    <input type="hidden" id="user" value="{{ auth()->user()->id ?? 'anonymous' }}" readonly class="d-none">
     <div style="width: 100%; height: 650px;" class="__flex-center hide-on-load">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
@@ -40,6 +43,7 @@
         @yield('content')
     </main>
 
+    @include('layouts.parts.user.chat')
     @include('layouts.parts.user.footer')
 
 
@@ -51,9 +55,15 @@
     <script src="{{ asset('js/mega_menu.js') }}"></script>
 
     <script src="{{ asset('js/custom_counter.js') }}"></script>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
+        integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
+    </script>
+
     {{-- custom js --}}
     <script src="{{ asset('js/userpanel/homepage.js') }}"></script>
+    <script src="{{ asset('js/userpanel/chat.js') }}"></script>
 
+    @yield('scripts')
 </body>
 
 </html>

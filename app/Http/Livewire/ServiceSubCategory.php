@@ -10,8 +10,9 @@ class ServiceSubCategory extends Component
 
     public $serviceCategoryId;
     public $subCategories;
-    public $name;
+    public $name, $slug;
     public $is_collapsed = false;
+    public $error;
 
     protected $listeners = [
         'showSubCategory'
@@ -24,17 +25,26 @@ class ServiceSubCategory extends Component
 
     public function render()
     {
-        $this->subCategories = ModelsServiceSubCategory::where('service_categories_id', $this->serviceCategoryId)->get();
+        $this->subCategories = ModelsServiceSubCategory::where('service_category_id', $this->serviceCategoryId)->get();
         return view('livewire.service-sub-category');
     }
 
     public function saveNewSubServiceCategory()
     {
+
+        if (ModelsServiceSubCategory::where('slug', $this->slug)->count() > 0) {
+            $this->error = 'Slug is already taken';
+            return;
+        }
+
         ModelsServiceSubCategory::create([
             'name' => $this->name,
-            'service_categories_id' => $this->serviceCategoryId,
+            'service_category_id' => $this->serviceCategoryId,
+            'slug' => $this->slug,
         ]);
         $this->name = '';
+        $this->slug = '';
+        $this->error = '';
     }
 
 

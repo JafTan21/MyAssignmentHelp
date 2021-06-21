@@ -27,7 +27,28 @@ use Illuminate\Support\Facades\Route;
 Route::as('userpanel.')
     ->group(function () {
         Route::get('/', [PageController::class, 'home'])->name('home');
-        Route::get('/s/{slug}', [PageController::class, 'service'])->name('service');
+        Route::get('services', [PageController::class, 'services'])->name('services');
+        Route::get('/{page}', [PageController::class, 'page'])
+            ->where('page', 'answers|questions')
+            ->name('page');
+
+        Route::get('service/{page_slug}', [PageController::class, 'servicePage'])
+            ->name('service-page');
+
+        Route::get(
+            'question-categories',
+            [PageController::class, 'questionCategories']
+        )->name('questionCategories');
+
+        Route::get(
+            'question-categories/{questionCategory_slug}/all-questions',
+            [PageController::class, 'questionCategoriesAllQuestions']
+        )->name('questionCategory.all-questions');
+
+        Route::get(
+            '/question/{question_slug}',
+            [PageController::class, 'quesiton']
+        )->name('question');
     });
 
 Route::post('/upload', [ImageController::class, 'store'])

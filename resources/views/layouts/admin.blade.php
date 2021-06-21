@@ -28,12 +28,18 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
-
+    <style>
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
     @livewireStyles
 </head>
 
 <body class="hold-transition sidebar-mini">
 
+    <input type="hidden" id="user" value="{{ auth()->id() }}" readonly class="d-none">
     <!-- Site wrapper -->
     <div class="wrapper">
         @include('layouts.parts.admin.header')
@@ -125,6 +131,13 @@
     </script>
 
     @livewireScripts
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
+        integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
+    </script>
+
+    <script src="{{ asset('js/admin/chat.js') }}"></script>
+
 
     @yield('scripts', '')
 </body>

@@ -16,7 +16,8 @@ class CreateServiceSubCategoriesTable extends Migration
         Schema::create('service_sub_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('service_categories_id')->constrained();
+            $table->foreignId('service_category_id')->constrained();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

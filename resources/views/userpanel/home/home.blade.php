@@ -12,3 +12,11 @@
 @include('userpanel.inc.app-promotion')
 
 @endsection
+
+
+@section('scripts')
+<script>
+    $("#messages").scrollTop($("#messages").prop("scrollHeight"));
+
+</script>
+@endsection

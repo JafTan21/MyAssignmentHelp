@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServiceMenusTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateServiceMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_menus', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->integer('submenu_of')->nullable();
-            $table->integer('sub_submenu_of')->nullable();
+            $table->foreignId('question_id')->constrained();
+            $table->text('answer');
+            $table->json('others')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateServiceMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_menus');
+        Schema::dropIfExists('answers');
     }
 }

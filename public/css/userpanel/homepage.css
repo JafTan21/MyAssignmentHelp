@@ -48,10 +48,12 @@
 .banner {
     width: 100%;
     min-height: 521px;
-    background-image: url('/images/home-page-new-banner.jpg');
+    background-image: url('https://image.freepik.com/free-vector/student-group-people-holding-books-education-banner_48369-7798.jpg');
+    /* background-image: url('/images/home-page-new-banner.jpg'); */
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 20px;
 }
 
 .banner form {
@@ -120,7 +122,6 @@
     background-color: #dd6e02;
     color: #fff;
     padding: 8px 30px;
-    border: none;
     box-shadow: 2px 2px 2px #9a9a9a;
     cursor: pointer;
     margin: 0 auto;
@@ -131,11 +132,13 @@
     border-radius: 2px;
     text-align: center;
     display: inline-block;
+    border: 1px solid #373737 !important;
 }
 
 .order-now-btn:hover {
-    background-color: #a75e16;
-    color: white;
+    background-color: #eb7e11;
+    color: white !important;
+    border: 1px solid transparent !important;
 }
 
 .text-373737 {
@@ -216,4 +219,8 @@
         max-width: 125px;
         height: auto;
     }
+}
+
+.questions-list p {
+    display: inline;
 }

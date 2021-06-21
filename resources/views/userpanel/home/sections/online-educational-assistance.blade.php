@@ -10,10 +10,12 @@
             <div class="container ">
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-2 p-0">
-                        <img src="{{ asset('images/icon/how-it-works-1.svg') }}" alt="" height="80">
+
                     </div>
                     <div class="col-12 col-lg-10 p-0" style="text-align:left;">
-                        <h1 class="heading-2 left-text-center-in-mobile">
+                        <img src="{{ asset('images/icon/how-it-works-1.svg') }}" alt="" height="80">
+                        <h1 class="heading-2 ">
+                            {{-- left-text-center-in-mobile --}}
                             Tell Us What You Need
                         </h1>
                         <p style="font-size: 16px;">
@@ -27,10 +29,11 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-2 p-0">
-                        <img src="{{ asset('images/icon/how-it-works-2.svg') }}" alt="" height="80">
+
                     </div>
                     <div class="col-12 col-lg-10 p-0" style="text-align:left;">
-                        <h1 class="heading-2 left-text-center-in-mobile">
+                        <img src="{{ asset('images/icon/how-it-works-2.svg') }}" alt="" height="80">
+                        <h1 class="heading-2 ">
                             Pay For Assignment
                         </h1>
                         <p style="font-size: 16px;">
@@ -45,10 +48,11 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-2 p-0">
-                        <img src="{{ asset('images/icon/how-it-works-3.svg') }}" alt="" height="80">
+
                     </div>
                     <div class="col-12 col-lg-10 p-0" style="text-align:left;">
-                        <h1 class="heading-2 left-text-center-in-mobile">
+                        <img src="{{ asset('images/icon/how-it-works-3.svg') }}" alt="" height="80">
+                        <h1 class="heading-2 ">
                             Receive Completed Solution
                         </h1>
                         <p style="font-size: 16px;">
@@ -60,9 +64,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2 col-8 __flex-center bg-secondary m-auto text-white" style="height: 200px">
+        {{-- <div class="col-lg-2 col-8 __flex-center bg-secondary m-auto text-white" style="height: 200px">
             A youtube video will be shown here
-        </div>
+        </div> --}}
     </div>
     <div class="row mt-5 ">
         <div class="text-center">
