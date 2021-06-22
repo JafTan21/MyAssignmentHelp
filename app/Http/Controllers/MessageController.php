@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -12,17 +13,21 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('admin.message.index', [
-            'old_messages' => $this->getOldMessages(2),
+            'old_messages' => $this->getOldMessages($request->room),
+            'room' => $request->room ?? 'admin',
         ]);
     }
 
-    public function getOldMessages($to_user)
+    public function getOldMessages($room)
     {
-        return Message::where('user_from_id', auth()->id())
-            ->where('user_to_id', $to_user)
+        return Message::where('room', $room)
+            ->with([
+                'user_from',
+                'user_to',
+            ])
             ->get();
     }
 
@@ -90,5 +95,19 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function inbox($room)
+    {
+        Message::where('room', $room)
+            ->whereNull('viewed_at')
+            ->where('user_to_id', 'admin')
+            ->update([
+                'viewed_at' => now(),
+            ]);
+        return view('Admin.message.inbox', [
+            'room' => $room,
+            'old_messages' => $this->getOldMessages($room),
+        ]);
     }
 }

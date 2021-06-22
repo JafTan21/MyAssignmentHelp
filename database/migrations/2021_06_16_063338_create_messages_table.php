@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
             $table->text('message');
             $table->string('user_from_id');
             $table->string('user_to_id');
+            $table->string('room');
             $table->timestamp('viewed_at')->nullable();
             $table->timestamps();
         });

@@ -32,6 +32,7 @@
 <body>
 
     <input type="hidden" id="user" value="{{ auth()->user()->id ?? 'anonymous' }}" readonly class="d-none">
+    <input type="hidden" id="name" value="{{ auth()->user()->name ?? 'anonymous' }}" readonly class="d-none">
     <div style="width: 100%; height: 650px;" class="__flex-center hide-on-load">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>

@@ -41,27 +41,22 @@ function genarate_markup_get_message(data) {
     return message;
 }
 
-function scrollToEnding(elm) {
-    $(elm).scrollTop($(elm).prop("scrollHeight"));
-}
-
-$(function() {
-
-    var user_to_id = 'admin';
-
-    const ip_address = '127.0.0.1';
-    const socket_port = '3000';
-    const socket = io(ip_address + ':' + socket_port);
-    const chatInput = $('#chatInput');
+$(document).ready(function() {
+    let ip_address = '127.0.0.1';
+    let socket_port = '3000';
+    let socket = io(ip_address + ':' + socket_port);
+    let chatInput = $('#chatInput');
     const messages = $("#messages");
 
     const user_from_id = $("#user").val();
-    const user = {
-        name: $("#name").val(),
-    };
-    var room;
+    const room = $("#room").val();
+    const user_to_id = room;
 
-    const joinRoom = (room, from_user = true) => {
+    const to_user = {
+        name: $("#to_user_name").val(),
+    };
+
+    const joinRoom = (room, from_user) => {
         socket.emit('joinRoom', {
             room,
             from_user
@@ -70,45 +65,48 @@ $(function() {
         console.log('joined : ' + room);
     }
 
-    // 
-    $("#adminFinder").click(() => {
-        joinRoom(user_from_id);
+    joinRoom(room || 'admin', false);
+
+    socket.on('newUserMessageRequest', room_name => {
+        if (room == room_name) {
+            socket.emit('adminViewingUser', room);
+        } else {
+            $("#new-message-" + room_name).html('new');
+        }
     });
 
     const sendMessage = (message) => {
-        if (!message) {
-            message = chatInput.val();
-        }
+        message = message || chatInput.val();
         if (message) {
             var data = {
                 message,
                 user_from_id: user_from_id,
                 user_to_id: user_to_id,
-                room: user_from_id
+                room: room
             };
-            socket.emit('sendChatToServerForAdmin', data);
+            socket.emit('sendChatToServerForUser', data);
             chatInput.val('');
+
             messages.append(genarate_markup_send_message({
-                message: data.message,
-                name: user.name,
-                time: (new Date).toLocaleString(),
-            }));
-        }
-
-        scrollToEnding(messages);
-
-        return false;
-    }
-
-    const getMessage = (data) => {
-        if (data.message) {
-            messages.append(genarate_markup_get_message({
                 message: data.message,
                 name: 'Admin',
                 time: (new Date).toLocaleString(),
-            }))
+            }));
         }
-        scrollToEnding(messages);
+        $("#messages-card").scrollTop($("#messages-card").prop("scrollHeight"));
+        return false;
+    }
+
+    const getMessage = (message) => {
+        if (message) {
+            messages.append(genarate_markup_get_message({
+                message: message,
+                name: to_user.name,
+                time: (new Date).toLocaleString(),
+            }));
+        }
+        $("#messages-card").scrollTop($("#messages-card").prop("scrollHeight"));
+        socket.emit('updateViewedAt', { room });
         return false;
     }
 
@@ -121,20 +119,17 @@ $(function() {
     });
     $("#sendButton").on('click', () => sendMessage(chatInput.val()));
 
-    socket.on('getAdminChat', (data) => {
+
+    $("#messages-card").scrollTop($("#messages-card").prop("scrollHeight"));
+
+    socket.emit('adminViewingUser', room);
+
+    socket.on('getUserChat', (data) => {
         console.log(data);
-        getMessage(data);
-        $("#new_unread_message_count").html(1);
+        getMessage(data.message);
     });
 
-
-    socket.on('show-message-section', () => {
-        $("#userChatSection").removeClass('d-none');
-        $("#adminFinder").hide();
-        $("#messages").scrollTop($("#messages").prop("scrollHeight"));
-    });
-    $("#msgBtn").click(() => {
-        $("#new_unread_message_count").html('');
-        // joinRoom(user_from_id);
+    $("#all-contacts-button").click(() => {
+        $("#users").slideToggle();
     });
 });

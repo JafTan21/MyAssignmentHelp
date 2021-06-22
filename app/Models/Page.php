@@ -17,4 +17,14 @@ class Page extends Model
         'main_category_id',
         'sub_category_id',
     ];
+
+    public function mainCategory()
+    {
+        return $this->belongsTo(ServiceCategory::class);
+    }
+
+    public function subCategory()
+    {
+        return $this->belongsTo(ServiceSubCategory::class);
+    }
 }

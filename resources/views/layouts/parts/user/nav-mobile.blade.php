@@ -16,16 +16,6 @@
         <ul id="main-menu" class="sm sm-blue " style="z-index: 1">
             @include('layouts.parts.user.services')
             @include('layouts.parts.user.questions')
-            <li class="">
-                <a href="$" class="">
-                    Samples
-                </a>
-            </li>
-            <li class="">
-                <a href="$" class="">
-                    Experts
-                </a>
-            </li>
         </ul>
     </div>
 </nav>

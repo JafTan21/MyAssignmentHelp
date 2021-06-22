@@ -3,7 +3,7 @@
  right: -40px;
   top: 50%;
   transform: rotate(-90deg);
-  z-index: 100;" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="msgBtnClicked();">
+  z-index: 100;" data-bs-toggle="modal" data-bs-target="#exampleModal" id="msgBtn">
     {{-- onclick="toggleShowChatModal();" --}}
     Chat with admin
     <span class="badge badge-warning" id="new_unread_message_count"></span>
@@ -33,15 +33,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="col-md-12">
+
+                <div class="col-md-12 text-center">
+                    <button id="adminFinder" class="btn btn-warning">
+                        Find an admin
+                    </button>
+                </div>
+
+                <div class="col-md-12 d-none" id="userChatSection">
                     <div id="messages" style="max-height: 400px; overflow-y: scroll;">
-                        @foreach (\App\Models\Message::where('user_from_id', auth()->id())->where('user_to_id',
-                        2)->get() as $old_message)
+                        @foreach (\App\Models\Message::where('room', auth()->id())->get() as $old_message)
                         <div class="direct-chat-msg {{ $old_message->user_from_id == auth()->id() ? 'right':'' }}">
                             <div class="direct-chat-infos clearfix">
                                 <span
                                     class="direct-chat-name float-{{ $old_message->user_from_id == auth()->id() ? 'right':'left' }}">
-                                    Sarah Bullock </span> <span
+                                    {{ $old_message->user_from_id == auth()->id() 
+                                        ? auth()->user()->name
+                                        : $old_message->user_to->name }}
+                                </span>
+                                <span
                                     class="direct-chat-timestamp float-{{ $old_message->user_from_id == auth()->id() ? 'left':'right' }}">
                                     {{ $old_message->created_at }} </span>
                             </div>
@@ -64,3 +74,9 @@
         </div>
     </div>
 </div>
+
+@section('scripts')
+<script>
+
+</script>
+@endsection

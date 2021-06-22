@@ -33,9 +33,8 @@ function genarate_markup_get_message(msg) {
     return message;
 }
 
-var user_to_id;
 
-$(function() {
+$(document).ready(function() {
     let ip_address = '127.0.0.1';
     let socket_port = '3000';
     let socket = io(ip_address + ':' + socket_port);
@@ -43,7 +42,20 @@ $(function() {
     const messages = $("#messages");
 
     const user_from_id = $("#user").val();
-    user_to_id = 2;
+    var room;
+    var user_to_id = 2;
+
+    const joinRoom = room => {
+        socket.emit('joinRoom', room);
+        room = room;
+        console.log('joined : ' + room);
+    }
+
+    joinRoom($("#room").val() || 'admin');
+
+    socket.on('newUserMessageRequest', room => {
+        $("#new-message-" + room).html('new');
+    });
 
     const sendMessage = (message) => {
         message = message || chatInput.val();
@@ -52,6 +64,7 @@ $(function() {
                 message,
                 user_from_id: user_from_id,
                 user_to_id: user_to_id,
+                room: $("#room").val(),
             };
             socket.emit('sendChatToServerForUser', data);
             chatInput.val('');
@@ -82,5 +95,9 @@ $(function() {
     socket.on('getUserChat', (data) => {
         console.log(data);
         getMessage(data.message);
+    });
+
+    socket.on('newUserJoinedTheChat', () => {
+        getMessage('New user joined the chat');
     });
 });

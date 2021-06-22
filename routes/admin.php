@@ -20,6 +20,7 @@ Route::prefix('admin')
         Route::get('page/get-sub-categories/{id}', [ControllersPageController::class, 'getSubCategories'])->name('services.get-sub-categories');
         Route::resource('page', ControllersPageController::class);
         Route::get('service-category', [ServiceCategoryController::class, 'index'])->name('serviceCategory.index');
+        Route::get('/message/inbox/{room}', [MessageController::class, 'inbox'])->name('message.inbox');
         Route::resource('message', MessageController::class);
         Route::resource('questionCategory', QuestionCategoryController::class);
         Route::resource('question', QuestionController::class);
