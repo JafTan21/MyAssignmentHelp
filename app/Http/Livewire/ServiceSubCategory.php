@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Page;
 use App\Models\ServiceSubCategory as ModelsServiceSubCategory;
 use Livewire\Component;
 
@@ -11,12 +12,18 @@ class ServiceSubCategory extends Component
     public $serviceCategoryId;
     public $subCategories;
     public $name, $slug;
-    public $is_collapsed = false;
+    public $is_collapsed = true;
     public $error;
+    public $pages;
 
     protected $listeners = [
         'showSubCategory'
     ];
+
+    public function mount()
+    {
+        $this->pages = Page::all();
+    }
 
     public function showSubCategory($serviceCategoryId)
     {

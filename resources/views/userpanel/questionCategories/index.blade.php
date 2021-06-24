@@ -26,10 +26,16 @@
                             chr($i))
                             ) as $questionCategory)
                             <li class="list-group-item d-flex justify-content-between align-items-start">
+                                @if ($questionCategory->staticPageExists)
+                                <a href="{{ '/question-category/'.$questionCategory->slug.'.html' }}" class="">
+                                    {{ $questionCategory->name }}
+                                </a>
+                                @else
                                 <a href="{{ route('userpanel.questionCategory.all-questions', $questionCategory->slug) }}"
                                     class="">
                                     {{ $questionCategory->name }}
                                 </a>
+                                @endif
                                 <span class="badge bg-primary rounded-pill">
                                     {{ $questionCategory->questions()->count() }}
                                 </span>

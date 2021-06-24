@@ -108,6 +108,7 @@ class MessageController extends Controller
         return view('Admin.message.inbox', [
             'room' => $room,
             'old_messages' => $this->getOldMessages($room),
+            'user' => User::where('id', $room)->firstOrFail(),
         ]);
     }
 }

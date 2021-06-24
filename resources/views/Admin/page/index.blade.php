@@ -37,6 +37,8 @@ All pages
                                             Category </th>
                                         <th class="">
                                             Sub Category </th>
+                                        <th class="">
+                                            Static page </th>
                                     </tr>
                                 </thead>
                                 <tbody class="">
@@ -47,7 +49,7 @@ All pages
                                         </td>
                                         <td class="">
                                             <a href="{{ route('admin.page.edit', $page->id) }}" class="text-info">
-                                                {{ $page->slug }}
+                                                {{ $page->title }}
                                             </a>
                                         </td>
                                         <td class="">
@@ -55,6 +57,18 @@ All pages
                                         </td>
                                         <td class="">
                                             {{ $page->subCategory->name }}
+                                        </td>
+                                        <td class="">
+                                            @if ($page->staticPageExists)
+                                            <div class="text-success">
+                                                Yes
+                                            </div>
+                                            @else
+                                            <a href="{{ route('admin.page.GenerateStaticPage', $page->slug) }}"
+                                                class="text-danger">
+                                                No. Generate now?
+                                            </a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

@@ -21,6 +21,7 @@ class CreatePagesTable extends Migration
             $table->text('content');
             $table->integer('main_category_id')->nullable();
             $table->integer('sub_category_id')->nullable();
+            $table->boolean('has_static_page')->default(false);
             $table->timestamps();
         });
     }

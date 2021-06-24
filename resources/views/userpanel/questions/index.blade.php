@@ -4,7 +4,9 @@
 <div class="container">
     <ul class="">
         @foreach ($questions as $question)
-        <li class="">{{ $question }}</li>
+        <li class="">
+            {{ $question }}
+        </li>
         @endforeach
     </ul>
 </div>

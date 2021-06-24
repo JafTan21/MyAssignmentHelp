@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Adminpanel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Adminpanel\StoreQuestionRequest;
-use App\Http\Requests\adminpanel\UpdateQuestionRequest;
+use App\Http\Requests\Adminpanel\UpdateQuestionRequest;
 use App\Models\Question;
+use App\Services\StaticPageGenerator;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -96,5 +97,27 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function GenerateStaticPage($question_slug)
+    {
+        $question = Question::where('slug', $question_slug)
+            ->firstOrFail();
+        if (StaticPageGenerator::generate(
+            'question',
+            $question,
+            'userpanel.question.index',
+            'question'
+        )) {
+            $data = [
+                'success' => 'Static page created successfully',
+            ];
+        } else {
+            $data = [
+                'error' => 'something went wrong',
+            ];
+        }
+
+        return redirect()->back()->with($data);
     }
 }

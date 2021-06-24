@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Adminpanel\StoreQuestionCategoryRequest;
 use App\Http\Requests\Adminpanel\UpdateQuestionCategoryRequest;
 use App\Models\QuestionCategory;
+use App\Services\StaticPageGenerator;
 use Illuminate\Http\Request;
 
 class QuestionCategoryController extends Controller
@@ -96,5 +97,27 @@ class QuestionCategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function GenerateStaticPage($question_category_slug)
+    {
+        $question_category = QuestionCategory::where('slug', $question_category_slug)
+            ->firstOrFail();
+        if (StaticPageGenerator::generate(
+            'question-category',
+            $question_category,
+            'userpanel.questionCategories.all-questions',
+            'questionCategory'
+        )) {
+            $data = [
+                'success' => 'Static page created successfully',
+            ];
+        } else {
+            $data = [
+                'error' => 'something went wrong',
+            ];
+        }
+
+        return redirect()->back()->with($data);
     }
 }

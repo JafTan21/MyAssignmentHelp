@@ -92,13 +92,23 @@
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>@if (Session::has('success'))
+    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    @if (Session::has('success'))
     <script>
         Swal.fire({
             position: 'top-end',
                 icon:'success',
                 text: "{{ Session::get('success') }}",
-                // timer: 1000,
+            });
+    </script>
+    @endif
+
+    @if (Session::has('error'))
+    <script>
+        Swal.fire({
+            position: 'top-end',
+                icon:'error',
+                text: "{{ Session::get('error') }}",
             });
     </script>
     @endif

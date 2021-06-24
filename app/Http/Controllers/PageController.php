@@ -7,6 +7,7 @@ use App\Http\Requests\Adminpanel\UpdatePageRequest;
 use App\Models\Page;
 use App\Models\ServiceCategory;
 use App\Models\ServiceSubCategory;
+use App\Services\StaticPageGenerator;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -104,5 +105,27 @@ class PageController extends Controller
             'id' => $id,
             'subCategories' => ServiceCategory::where('id', $id)->first()->serviceSubCategories,
         ]);
+    }
+
+    public function GenerateStaticPage($page_slug)
+    {
+        $page = Page::where('slug', $page_slug)
+            ->firstOrFail();
+        if (StaticPageGenerator::generate(
+            'service',
+            $page,
+            'userpanel.services.index',
+            'page'
+        )) {
+            $data = [
+                'success' => 'Static page created successfully',
+            ];
+        } else {
+            $data = [
+                'error' => 'something went wrong',
+            ];
+        }
+
+        return redirect()->back()->with($data);
     }
 }

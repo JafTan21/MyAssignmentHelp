@@ -31,6 +31,8 @@
         @forelse ($subCategories as $subCategory)
         <li class="list-group-item">
             {{ $subCategory->name }}
+            (Total page: {{ $pages->where('main_category_id', $serviceCategoryId)
+            ->where('sub_category_id', $subCategory->id)->count() }})
         </li>
         @empty
         <li class="list-group-item bg-warning">No sub category found</li>

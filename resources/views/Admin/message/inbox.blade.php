@@ -8,8 +8,7 @@ Messenger
 
 
 <input type="hidden" value="{{ $room }}" id="room">
-<input type="hidden" id="to_user_name" value="{{ \App\Models\User::where('id', $room)->first()->name }}" readonly
-    class="d-none">
+<input type="hidden" id="to_user_name" value="{{ $user->name }}" readonly class="d-none">
 <div class="container">
     <div class="row">
         @include('Admin.message.list')
@@ -52,7 +51,9 @@ Messenger
         <!-- DIRECT CHAT SUCCESS -->
         <div class="card card-success card-outline direct-chat direct-chat-success ">
             <div class="card-header">
-                <h3 class="card-title">Direct Chat</h3>
+                <h3 class="card-title">
+                    {{ $user->name }}
+                </h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">

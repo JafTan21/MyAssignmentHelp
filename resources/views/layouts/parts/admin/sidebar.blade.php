@@ -47,18 +47,33 @@
 
                 <li class="nav-item">
                     <a href="{{ route('admin.page.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon far fa-file-alt"></i>
                         <p>
                             Pages
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.serviceCategory.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Services
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.assignmentRequest.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sticky-note"></i>
+                        <p>
+                            Assignment requests
                         </p>
                     </a>
                 </li>
@@ -74,7 +89,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('admin.question.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-question"></i>
                         <p>
                             Questions
                         </p>
@@ -83,7 +98,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('admin.message.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-envelope-open-text"></i>
                         <p>
                             Messaging
                         </p>

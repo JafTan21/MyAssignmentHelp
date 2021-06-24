@@ -10,7 +10,7 @@ class ServiceCategory extends Component
 
     public $active = '';
     public $name;
-    public $is_collapsed = false;
+    public $is_collapsed = true;
 
     public function render()
     {

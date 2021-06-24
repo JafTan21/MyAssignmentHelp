@@ -17,6 +17,7 @@ class CreateQuestionCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->boolean('has_static_page')->default(false);
             $table->timestamps();
         });
     }

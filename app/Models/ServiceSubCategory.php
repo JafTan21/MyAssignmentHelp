@@ -13,6 +13,7 @@ class ServiceSubCategory extends Model
         'name',
         'service_category_id',
         'slug',
+        'has_static_page'
     ];
 
 

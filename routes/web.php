@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\AssignmentRequest;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Userpanel\PageController;
+use App\Models\Page;
+use App\Models\QuestionCategory;
+use App\Models\ServiceCategory;
 use App\Models\ServiceMenu;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +46,7 @@ Route::as('userpanel.')
         )->name('questionCategories');
 
         Route::get(
-            'question-categories/{questionCategory_slug}/all-questions',
+            'question-category/{questionCategory_slug}/all-questions',
             [PageController::class, 'questionCategoriesAllQuestions']
         )->name('questionCategory.all-questions');
 
@@ -49,6 +54,30 @@ Route::as('userpanel.')
             '/question/{question_slug}',
             [PageController::class, 'quesiton']
         )->name('question');
+
+        Route::resource('assignmentRequest', AssignmentRequest::class);
+
+        Route::get('get-header-footer', function () {
+            $serviceCategories = ServiceCategory::with([
+                'serviceSubCategories',
+            ])->get();
+            $questionCategories = QuestionCategory::with([
+                'questions'
+            ])->get();
+            $pages = Page::all();
+            return response()->json([
+                'navContents' => response()->view('layouts.parts.user.nav-contents', [
+                    'serviceCategories' => $serviceCategories,
+                    'questionCategories' => $questionCategories,
+                    'pages' => $pages
+                ])->content(),
+                'footer' => response()->view('layouts.parts.user.footer', [
+                    'serviceCategories' => $serviceCategories,
+                    'questionCategories' => $questionCategories,
+                    'pages' => $pages
+                ])->content(),
+            ]);
+        });
     });
 
 Route::post('/upload', [ImageController::class, 'store'])

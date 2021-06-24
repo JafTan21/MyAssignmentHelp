@@ -15,9 +15,15 @@
             </div>
             <div class="heading-2 text-md p-0">
                 Category:
+                @if ($questionCategory->staticPageExists)
+                <a href="{{ '/question-category/'.$questionCategory->slug.'.html' }}" class="questions-list">
+                    {{ $questionCategory->name }}
+                </a>
+                @else
                 <a href="{{ route('userpanel.questionCategory.all-questions',  $questionCategory->slug) }}" class="">
                     {{  $questionCategory->name }}
                 </a>
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -25,9 +31,15 @@
                 @forelse ( $questionCategory->questions as $question)
                 <ul class="list-group p-0 m-0 mt-3 col-md-8 hvr-float">
                     <li class="list-group-item ">
+                        @if ($question->staticPageExists)
+                        <a href="{{ '/question/'.$question->slug.'.html' }}" class="">
+                            {!! $question->title !!}
+                        </a>
+                        @else
                         <a href="{{ route('userpanel.question', $question->slug) }}" class="">
                             {!! $question->title !!}
                         </a>
+                        @endif
                     </li>
                 </ul>
                 @empty

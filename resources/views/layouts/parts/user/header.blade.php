@@ -1,12 +1,3 @@
-{{-- menu and submenu --}}
-
-@php
-
-$serviceCategories = \App\Models\ServiceCategory::with('serviceSubCategories')->get();
-$questionCategories = \App\Models\QuestionCategory::get();
-
-@endphp
-
 <header class="__bg-primary">
     {{-- <div class="user-offer __bg-secondary">
         <img src="{{ asset('images/icon/ombo_offer.webp') }}" alt="" height="25" width="110">
@@ -79,6 +70,5 @@ $questionCategories = \App\Models\QuestionCategory::get();
         </div>
     </div>
     {{-- @include('layouts.parts.user.nav') --}}
-
 </header>
 @include('layouts.parts.user.nav-mobile')

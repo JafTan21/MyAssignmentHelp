@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('slug')->unique();
             $table->foreignId('question_category_id')->constrained();
             $table->json('others')->nullable();
+            $table->boolean('has_static_page')->default(false);
             $table->timestamps();
         });
     }

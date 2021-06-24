@@ -27,6 +27,11 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
     </script>
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}" class="">
+
+
+    <title>
+        @yield('title', config('app.name'))
+    </title>
 </head>
 
 <body>
@@ -39,14 +44,13 @@
         </div>
     </div>
     @include('layouts.parts.user.header')
-
     <main class="">
         @yield('content')
     </main>
 
     @include('layouts.parts.user.chat')
-    @include('layouts.parts.user.footer')
-
+    {{-- @include('layouts.parts.user.footer') --}}
+    <div id="footer"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -61,6 +65,7 @@
     </script>
 
     {{-- custom js --}}
+    <script src="{{ asset('js/userpanel/staticpage.js') }}"></script>
     <script src="{{ asset('js/userpanel/homepage.js') }}"></script>
     <script src="{{ asset('js/userpanel/chat.js') }}"></script>
 

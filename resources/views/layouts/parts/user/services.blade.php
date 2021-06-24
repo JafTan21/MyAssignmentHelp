@@ -19,12 +19,18 @@
                     </a>
 
                     <ul class="">
-                        @foreach (\App\Models\Page::where('main_category_id', $mainCategory->id)
-                        ->where('sub_category_id', $subCategory->id)->get() as $page)
+                        @foreach ($pages->where('main_category_id', $mainCategory->id)
+                        ->where('sub_category_id', $subCategory->id) as $page)
                         <li class="">
+                            @if ($page->staticPageExists)
+                            <a href="{{ '/service/'.$page->slug.'.html' }}" class="">
+                                {{ $page->title }}
+                            </a>
+                            @else
                             <a href="{{ route('userpanel.service-page', $page->slug) }}" class="">
                                 {{ $page->title }}
                             </a>
+                            @endif
                         </li>
                         @endforeach
                     </ul>

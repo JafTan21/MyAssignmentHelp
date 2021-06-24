@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use League\CommonMark\Inline\Element\Strong;
 
 class Question extends Model
 {
@@ -14,6 +16,7 @@ class Question extends Model
         'slug',
         'question_category_id',
         'others',
+        'has_static_page'
     ];
 
     public function questionCategory()
@@ -24,5 +27,10 @@ class Question extends Model
     public function answer()
     {
         return $this->hasOne(Answer::class);
+    }
+
+    public function getStaticPageExistsAttribute()
+    {
+        return Storage::disk('public_htmls')->exists('question/' . $this->slug . '.html');
     }
 }
