@@ -15,7 +15,7 @@ class AssignmentRequest extends Controller
      */
     public function index()
     {
-        return view('admin.assignmentRequests.index', [
+        return view('Admin.assignmentRequests.index', [
             'assignmentRequests' => ModelsAssignmentRequest::all(),
         ]);
     }

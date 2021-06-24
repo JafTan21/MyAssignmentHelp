@@ -18,7 +18,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('admin.question.index', [
+        return view('Admin.question.index', [
             'questions' => Question::all(),
         ]);
     }
@@ -30,7 +30,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('admin.question.create');
+        return view('Admin.question.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        return view('admin.question.edit', [
+        return view('Admin.question.edit', [
             'question' => $question,
         ]);
     }

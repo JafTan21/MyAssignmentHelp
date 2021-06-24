@@ -7,24 +7,14 @@
     <title>AdminLTE 3 | Blank Page</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    {{-- <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> --}}
+    {{-- <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}"> --}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
-        type="text/css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
-    </script>
-
-    {{-- tiny mce --}}
-    <script src="https://cdn.tiny.cloud/1/ry369bid9umzbo5g7wdmx0wr4y4gnbmyv56b1xq7h22s5bw3/tinymce/5/tinymce.min.js"
-        referrerpolicy="origin">
-    </script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
@@ -35,6 +25,8 @@
         }
     </style>
     @livewireStyles
+
+    @yield('styles')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -112,40 +104,18 @@
             });
     </script>
     @endif
-
-    <script>
-        var editor = new FroalaEditor('#editor', {
-            imageUploadParam: 'image_param',
-            imageUploadMethod: 'post',
-            imageUploadURL: "{{ route('image.store') }}",
-            imageUploadParams: {
-                froala: 'true',
-                _token: "{{ csrf_token() }}"
-            }
-        })
-
-
-    </script>
+    <script src="https://kit.fontawesome.com/4d479e17c4.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js">
     </script>
     <script>
-        tinymce.init({
-      selector: '.editor-2',
-      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table advtable lists advlist fullpage fullscreen ',
-      toolbar_mode: 'floating',
-   });
-
-   $(document).ready( function () {
+        $(document).ready( function () {
     $('#myTable').DataTable();
 } );
     </script>
 
     @livewireScripts
 
-    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
-        integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
-    </script>
     @yield('scripts', '')
 </body>
 

@@ -19,7 +19,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('admin.page.index', [
+        return view('Admin.page.index', [
             'pages' => Page::all(),
         ]);
     }
@@ -31,7 +31,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('admin.page.create');
+        return view('Admin.page.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.page.edit', [
+        return view('Admin.page.edit', [
             'page' => Page::where('id', $id)->firstOrFail(),
         ]);
     }

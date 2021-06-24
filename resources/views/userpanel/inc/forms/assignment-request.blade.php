@@ -6,6 +6,9 @@
         <span style="font-size:18px; color: #c46405">MyAssignmentHelp.Com Experts</span>
     </div>
 
+
+    @include('layouts.errors')
+
     <div class="__flex-center flex-wrap">
         <div class="__flex-center flex-column mt-1 col-md-6 col-12">
             <div class="text-left" style="width: 90%;">

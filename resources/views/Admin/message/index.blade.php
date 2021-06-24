@@ -74,7 +74,20 @@ Messenger
 @endsection
 
 
+
+
+@section('styles')
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
+    type="text/css" />
+@endsection
+
+
+
 @section('scripts')
+
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
+    integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
+</script>
 
 <script src="{{ asset('js/admin/chat.js') }}"></script>
 

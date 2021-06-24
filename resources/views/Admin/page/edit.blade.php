@@ -64,10 +64,13 @@
 </div>
 @endsection
 
-@section('scripts')
-{{-- ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json --}}
 
-{{-- @include('ckeditor') --}}
+@section('styles')
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
+    type="text/css" />
+@endsection
+
+@section('scripts')
 
 <script>
     function load_service_sub_categories()
@@ -98,4 +101,20 @@ var url = "/admin/page/get-sub-categories/" + categoryId;
 
         load_service_sub_categories();
 </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
+</script>
+
+<script>
+    var editor = new FroalaEditor('#editor', {
+            imageUploadParam: 'image_param',
+            imageUploadMethod: 'post',
+            imageUploadURL: "{{ route('image.store') }}",
+            imageUploadParams: {
+                froala: 'true',
+                _token: "{{ csrf_token() }}"
+            }
+        })
+</script>
+
+
 @endsection

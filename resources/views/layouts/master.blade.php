@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="{{ asset('css/userpanel/homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mega_menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sm-blue/sm-blue.css') }}">
+    <!--
     <link rel="stylesheet" href="{{ asset('css/sm-clean/sm-clean.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sm-simple/sm-simple.css') }}">
+    -->
 
     <style class="">
         .sm-blue ul a,
@@ -38,11 +40,11 @@
 
     <input type="hidden" id="user" value="{{ auth()->user()->id ?? 'anonymous' }}" readonly class="d-none">
     <input type="hidden" id="name" value="{{ auth()->user()->name ?? 'anonymous' }}" readonly class="d-none">
-    <div style="width: 100%; height: 650px;" class="__flex-center hide-on-load">
+    {{-- <div style="width: 100%; height: 650px;" class="__flex-center hide-on-load">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     @include('layouts.parts.user.header')
     <main class="">
         @yield('content')

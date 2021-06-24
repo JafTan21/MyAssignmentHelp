@@ -15,7 +15,7 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
-        return view('admin.message.index', [
+        return view('Admin.message.index', [
             'old_messages' => $this->getOldMessages($request->room),
             'room' => $request->room ?? 'admin',
         ]);

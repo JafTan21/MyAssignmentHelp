@@ -18,7 +18,7 @@ class QuestionCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.questionCategory.index', [
+        return view('Admin.questionCategory.index', [
             'questionCategories' => QuestionCategory::all(),
         ]);
     }
@@ -30,7 +30,7 @@ class QuestionCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.questionCategory.create');
+        return view('Admin.questionCategory.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class QuestionCategoryController extends Controller
      */
     public function edit(QuestionCategory $questionCategory)
     {
-        return view('admin.questionCategory.edit', [
+        return view('Admin.questionCategory.edit', [
             'questionCategory' => $questionCategory,
         ]);
     }
