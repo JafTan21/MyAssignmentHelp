@@ -25,6 +25,7 @@ class StoreQuestionRequest extends FormRequest
     {
         return [
             'title' => ['required'],
+            'description' => ['nullable', 'string', 'max:500'],
             'slug' => ['required', 'unique:questions,slug'],
             'question_category_id' => ['required'],
         ];

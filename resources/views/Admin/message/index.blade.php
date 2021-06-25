@@ -77,8 +77,7 @@ Messenger
 
 
 @section('styles')
-<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
-    type="text/css" />
+<link href="{{ asset('froala_editor_4.0.1\css\froala_editor.pkgd.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 

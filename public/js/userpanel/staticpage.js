@@ -4,7 +4,7 @@ $(function() {
         url: "/get-header-footer",
         async: false,
         success: function(data) {
-            $("#nav-contents").html(data.navContents);
+            $("#header-container").html(data.headerContents);
             $("#footer").html(data.footer);
         }
     });

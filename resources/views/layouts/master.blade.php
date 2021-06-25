@@ -4,13 +4,10 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    {{-- todo - use minifies version --}}
     <link rel="stylesheet" href="{{ asset('css/userpanel/homepage.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mega_menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/sm-blue/sm-blue.css') }}">
-    <!--
-    <link rel="stylesheet" href="{{ asset('css/sm-clean/sm-clean.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/sm-simple/sm-simple.css') }}">
-    -->
+    <link rel="stylesheet" href="{{ asset('css/mega_menu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sm-blue/sm-blue.min.css') }}">
 
     <style class="">
         .sm-blue ul a,
@@ -22,18 +19,25 @@
         }
     </style>
 
-    <link rel="stylesheet" href="{{ asset('css/hover.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hover.min.css') }}">
 
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('froala_editor_4.0.1\css\froala_editor.pkgd.min.css') }}" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
     </script>
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}" class="">
 
+    @yield('styles')
 
     <title>
         @yield('title', config('app.name'))
     </title>
+
+    <meta charset="utf-8">
+    <meta name="Description" CONTENT="@yield('desciption', 'Best educational platform')">
+    <meta name="robots" content="noindex,nofollow">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -67,9 +71,9 @@
     </script>
 
     {{-- custom js --}}
-    <script src="{{ asset('js/userpanel/staticpage.js') }}"></script>
-    <script src="{{ asset('js/userpanel/homepage.js') }}"></script>
-    <script src="{{ asset('js/userpanel/chat.js') }}"></script>
+    <script src="{{ asset('js/userpanel/staticpage.min.js') }}"></script>
+    <script src="{{ asset('js/userpanel/homepage.min.js') }}"></script>
+    <script src="{{ asset('js/userpanel/chat.min.js') }}"></script>
 
     @yield('scripts')
 </body>

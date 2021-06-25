@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
+
+@section('title')
+{{ $questionCategory->slug }}
+@endsection
+
+
 @section('content')
 <style>
     .hvr-float:hover {
@@ -33,11 +39,11 @@
                     <li class="list-group-item ">
                         @if ($question->staticPageExists)
                         <a href="{{ '/question/'.$question->slug.'.html' }}" class="">
-                            {!! $question->title !!}
+                            {{ $question->title }}
                         </a>
                         @else
                         <a href="{{ route('userpanel.question', $question->slug) }}" class="">
-                            {!! $question->title !!}
+                            {{ $question->title }}
                         </a>
                         @endif
                     </li>

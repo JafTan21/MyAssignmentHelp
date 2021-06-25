@@ -16,7 +16,9 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Messages</span>
-                                    <span class="info-box-number">1,410</span>
+                                    <span class="info-box-number">
+                                        {{ $message_count }}
+                                    </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -25,11 +27,13 @@
                         <!-- /.col -->
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+                                <span class="info-box-icon bg-success"><i class="far fa-user"></i></span>
 
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Bookmarks</span>
-                                    <span class="info-box-number">410</span>
+                                    <span class="info-box-text">User</span>
+                                    <span class="info-box-number">
+                                        {{ $user_count }}
+                                    </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -38,11 +42,15 @@
                         <!-- /.col -->
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                                <span class="info-box-icon bg-warning">
+                                    <i class="far fa-question-circle"></i>
+                                </span>
 
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Uploads</span>
-                                    <span class="info-box-number">13,648</span>
+                                    <span class="info-box-text">Questions</span>
+                                    <span class="info-box-number">
+                                        {{ $question_count }}
+                                    </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -54,8 +62,8 @@
                                 <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
 
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Likes</span>
-                                    <span class="info-box-number">93,139</span>
+                                    <span class="info-box-text">Services</span>
+                                    <span class="info-box-number">{{ $service_count }}</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>

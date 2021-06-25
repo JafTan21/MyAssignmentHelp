@@ -129,7 +129,7 @@ $(function() {
 
 
     socket.on('show-message-section', () => {
-        $("#userChatSection").removeClass('d-none');
+        $("#message-sender").removeClass('d-none');
         $("#adminFinder").hide();
         $("#messages").scrollTop($("#messages").prop("scrollHeight"));
     });

@@ -25,6 +25,7 @@ class UpdateQuestionRequest extends FormRequest
     {
         return [
             'title' => ['required'],
+            'description' => ['nullable', 'string', 'max:500'],
             'slug' => [
                 'required',
                 'unique:questions,slug,' . $this->question->id . ',id',

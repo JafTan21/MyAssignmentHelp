@@ -33,37 +33,39 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-                <div class="col-md-12 text-center">
+                <div class="col-md-12 text-center mt-2">
                     <button id="adminFinder" class="btn btn-warning">
                         Find an admin
                     </button>
                 </div>
 
-                <div class="col-md-12 d-none" id="userChatSection">
-                    <div id="messages" style="max-height: 400px; overflow-y: scroll;">
-                        @foreach (\App\Models\Message::where('room', auth()->id())->get() as $old_message)
-                        <div class="direct-chat-msg {{ $old_message->user_from_id == auth()->id() ? 'right':'' }}">
-                            <div class="direct-chat-infos clearfix">
-                                <span
-                                    class="direct-chat-name float-{{ $old_message->user_from_id == auth()->id() ? 'right':'left' }}">
-                                    {{ $old_message->user_from_id == auth()->id() 
+                <div class="col-md-12" id="userChatSection">
+                    <div id="messages" style="max-height: 200px; overflow-y: scroll;">
+                        <div id="old-messages">
+                            @foreach (\App\Models\Message::where('room', auth()->id())->get() as $old_message)
+                            <div class="direct-chat-msg {{ $old_message->user_from_id == auth()->id() ? 'right':'' }}">
+                                <div class="direct-chat-infos clearfix">
+                                    <span
+                                        class="direct-chat-name float-{{ $old_message->user_from_id == auth()->id() ? 'right':'left' }}">
+                                        {{ $old_message->user_from_id == auth()->id() 
                                         ? auth()->user()->name
                                         : $old_message->user_to->name }}
-                                </span>
-                                <span
-                                    class="direct-chat-timestamp float-{{ $old_message->user_from_id == auth()->id() ? 'left':'right' }}">
-                                    {{ $old_message->created_at }} </span>
+                                    </span>
+                                    <span
+                                        class="direct-chat-timestamp float-{{ $old_message->user_from_id == auth()->id() ? 'left':'right' }}">
+                                        {{ $old_message->created_at }} </span>
+                                </div>
+                                <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=admin"
+                                    alt="Message User Image">
+                                <div class="direct-chat-text" style="word-break: break-word;">
+                                    {{ $old_message->message }}
+                                </div>
                             </div>
-                            <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=admin"
-                                alt="Message User Image">
-                            <div class="direct-chat-text" style="word-break: break-word;">
-                                {{ $old_message->message }}
-                            </div>
+                            @endforeach
                         </div>
-                        @endforeach
+
                     </div>
-                    <div class="input-group">
+                    <div class="input-group d-none" id="message-sender">
                         <input type="text" id="chatInput" placeholder="Type Message ..." class="form-control">
                         <span class="input-group-append">
                             <button type="button" class="btn btn-primary" id="sendButton">Send</button>
@@ -74,9 +76,3 @@
         </div>
     </div>
 </div>
-
-@section('scripts')
-<script>
-
-</script>
-@endsection

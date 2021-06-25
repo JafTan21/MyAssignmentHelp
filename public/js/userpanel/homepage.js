@@ -51,3 +51,15 @@ $(window).resize(makeResponsize);
 $(document).ready(function() {
     $(".hide-on-load").slideUp(500);
 });
+$(document).ready(function() {
+    $(".mobile_menu").simpleMobileMenu({
+        onMenuLoad: function(menu) {
+            console.log(menu)
+            console.log("menu loaded")
+        },
+        onMenuToggle: function(menu, opened) {
+            console.log(opened)
+        },
+        "menuStyle": "slide"
+    });
+})

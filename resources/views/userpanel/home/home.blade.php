@@ -3,6 +3,7 @@
 @section('content')
 
 @include('userpanel.home.sections.banner')
+@include('userpanel.inc.forms.assignment-request')
 @include('userpanel.home.sections.online-educational-assistance')
 @include('userpanel.home.sections.assignment-help-services')
 @include('userpanel.home.sections.counter')

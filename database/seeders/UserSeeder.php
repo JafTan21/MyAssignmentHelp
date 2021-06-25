@@ -26,11 +26,11 @@ class UserSeeder extends Seeder
             'name' => 'user 2',
             'email' => 'user2@gmail.com',
             'password' => bcrypt('user2@gmail.com'),
-        ]);
+        ])->assignRole('user');
         User::create([
             'name' => 'user 3',
             'email' => 'user3@gmail.com',
             'password' => bcrypt('user3@gmail.com'),
-        ]);
+        ])->assignRole('user');
     }
 }

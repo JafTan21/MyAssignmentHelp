@@ -70,7 +70,7 @@
     </div>
     <div class="row mt-5 ">
         <div class="text-center">
-            <a class="btn  order-now-btn" href="#">Order Now</a>
+            <a href="#assignmentRequestSection" class="btn order-now-btn" href="#">Order Now</a>
         </div>
     </div>
 </section>

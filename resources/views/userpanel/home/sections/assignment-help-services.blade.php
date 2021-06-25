@@ -20,7 +20,7 @@
                                 Online Assignment Help
                             </a>
                             <p style="text-align:left; font-size:14px;">
-                                MyAssignmenthelp.com is a one-stop solution for all urgent assignment help needs. We
+                                educompro.com is a one-stop solution for all urgent assignment help needs. We
                                 have
                                 the finest assignment writers from Australia for all your academic needs. Our essay &
                                 assignment experts possess great skill in writing assignments. Lecturers, professors and
@@ -43,7 +43,7 @@
                                 Online Assignment Help
                             </a>
                             <p style="text-align:left; font-size:14px;">
-                                MyAssignmenthelp.com is a one-stop solution for all urgent assignment help needs. We
+                                educompro.com is a one-stop solution for all urgent assignment help needs. We
                                 have
                                 the finest assignment writers from Australia for all your academic needs. Our essay &
                                 assignment experts possess great skill in writing assignments. Lecturers, professors and
@@ -66,7 +66,7 @@
                                 Online Assignment Help
                             </a>
                             <p style="text-align:left; font-size:14px;">
-                                MyAssignmenthelp.com is a one-stop solution for all urgent assignment help needs. We
+                                educompro.com is a one-stop solution for all urgent assignment help needs. We
                                 have
                                 the finest assignment writers from Australia for all your academic needs. Our essay &
                                 assignment experts possess great skill in writing assignments. Lecturers, professors and
@@ -89,7 +89,7 @@
                                 Online Assignment Help
                             </a>
                             <p style="text-align:left; font-size:14px;">
-                                MyAssignmenthelp.com is a one-stop solution for all urgent assignment help needs. We
+                                educompro.com is a one-stop solution for all urgent assignment help needs. We
                                 have
                                 the finest assignment writers from Australia for all your academic needs. Our essay &
                                 assignment experts possess great skill in writing assignments. Lecturers, professors and

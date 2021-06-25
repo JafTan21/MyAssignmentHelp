@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-{!! $question->title !!}
+{{ $question->title }}
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="card-header">
             <div class="heading p-0">
                 <i class="far fa-question-circle"></i>
-                {!! $question->title !!}
+                {{ $question->title }}
             </div>
             <div class="heading-2 text-md p-0">
                 Category:

@@ -2,9 +2,7 @@
 
     <ul class="list-group" id="users">
 
-        @foreach (\App\Models\User::with('roles')->get()->reject(function($user){
-        return $user->hasRole('admin');
-        }) as $user)
+        @foreach (\App\Models\User::role('user')->get() as $user)
         <li class="list-group-item d-flex justify-content-between align-items-center py-0">
             <a href="{{ route('admin.message.inbox', $user->id) }}" class="btn ">
                 {{ $user->name }}

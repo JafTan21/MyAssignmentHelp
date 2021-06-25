@@ -30,6 +30,9 @@ Question categories
                                             Question
                                         </th>
                                         <th class="">
+                                            Description
+                                        </th>
+                                        <th class="">
                                             Slug
                                         </th>
                                         <th class="">
@@ -52,7 +55,13 @@ Question categories
                                         <td class="">
                                             <a href="{{ route('admin.question.edit', $question->id) }}"
                                                 class="text-info">
-                                                {!! $question->title !!}
+                                                {{ $question->title }}
+                                            </a>
+                                        </td>
+                                        <td class="">
+                                            <a href="{{ route('admin.question.edit', $question->id) }}"
+                                                class="text-info">
+                                                {!! $question->description !!}
                                             </a>
                                         </td>
                                         <td class="">
@@ -103,14 +112,15 @@ Question categories
 
 
 @section('styles')
-<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
-    type="text/css" />
+<link href="{{ asset('froala_editor_4.0.1/css/froala_editor.pkgd.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('scripts')
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
-</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.1/js/froala_editor.min.js"
+    integrity="sha512-DC6eRe7DrRFl0gZcpnbMDPJg6QykwAfcdWy1iJ+lg5UYtp3AZc0u91d2NwYaRYq2muLWSkyG8Eqy/MejSmwpjw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
     var editor = new FroalaEditor('#editor', {

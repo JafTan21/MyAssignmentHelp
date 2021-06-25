@@ -9,6 +9,7 @@ use App\Models\ServiceCategory;
 use App\Models\ServiceMenu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,7 @@ Route::as('userpanel.')
             ])->get();
             $pages = Page::all();
             return response()->json([
-                'navContents' => response()->view('layouts.parts.user.nav-contents', [
+                'headerContents' => response()->view('layouts.parts.user.header-contents', [
                     'serviceCategories' => $serviceCategories,
                     'questionCategories' => $questionCategories,
                     'pages' => $pages
