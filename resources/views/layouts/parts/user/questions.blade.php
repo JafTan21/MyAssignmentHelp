@@ -12,24 +12,24 @@
                 {{ $questionCategory->name }}
             </a>
             @endif
-            <ul class="">
+            {{-- <ul class="">
                 @foreach ($questionCategory->questions as
                 $question)
                 <li class="">
                     @if ($question->staticPageExists)
                     <a href="{{ '/question/'.$question->slug.'.html' }}" class="questions-list">
-                        {!! $question->title !!}
-                    </a>
-                    @else
-                    <a href="{{ route('userpanel.question', $question->slug) }}" class="questions-list">
-                        {!! $question->title !!}
-                    </a>
-                    @endif
-                </li>
-                @endforeach
-            </ul>
-
+            {!! $question->title !!}
+            </a>
+            @else
+            <a href="{{ route('userpanel.question', $question->slug) }}" class="questions-list">
+                {!! $question->title !!}
+            </a>
+            @endif
         </li>
         @endforeach
-    </ul>
+    </ul> --}}
+
+</li>
+@endforeach
+</ul>
 </li>

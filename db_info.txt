@@ -1,0 +1,3 @@
+db:educomp1_educompro
+pass:Wip5a%51
+user:educompro

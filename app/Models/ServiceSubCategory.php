@@ -27,4 +27,14 @@ class ServiceSubCategory extends Model
         return Page::where('main_category_id', $this->mainCategory->id)
             ->where('sub_category_id', $this->id);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($sub_category) {
+            Page::where('sub_category_id', $sub_category->id)
+            ->delete();
+        });
+    }
 }

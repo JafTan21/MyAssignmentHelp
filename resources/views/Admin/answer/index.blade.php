@@ -31,6 +31,10 @@ Question categories
                         <th class="">
                             Category
                         </th>
+                        <th class="">
+                            Delete
+                        </th>
+
                     </tr>
                 </thead>
                 <tbody class="">
@@ -49,6 +53,12 @@ Question categories
                         </td>
                         <td class="">
                             {{ $question->category->name }}
+                        </td>
+                        <td class="">
+                            {{ $question->category->name }}
+                        </td>
+                        <td class="">
+
                         </td>
                     </tr>
                     @endforeach

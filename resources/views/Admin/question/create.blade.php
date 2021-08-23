@@ -25,7 +25,7 @@
                         <label>Question category: </label>
                         <select name="question_category_id" required class="form-control">
                             <option value="" selected disabled>--- Select ---</option>
-                            @foreach (\App\Models\QuestionCategory::all() as $category)
+                            @foreach (\App\Models\QuestionCategory::pluck('id', 'name') as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>

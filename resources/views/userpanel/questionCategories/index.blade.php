@@ -25,18 +25,18 @@
                             fn ($questionCategory, $key) => str_starts_with(strtolower($questionCategory->name),
                             chr($i))
                             ) as $questionCategory)
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <li class="list-group-item d-flex justify-content-between align-items-start" style="background:#f2f0f0">
                                 @if ($questionCategory->staticPageExists)
-                                <a href="{{ '/question-category/'.$questionCategory->slug.'.html' }}" class="">
+                                <a href="{{ '/question-category/'.$questionCategory->slug.'.html' }}" style="color:#969494">
                                     {{ $questionCategory->name }}
                                 </a>
                                 @else
                                 <a href="{{ route('userpanel.questionCategory.all-questions', $questionCategory->slug) }}"
-                                    class="">
+                                style="color:#969494">
                                     {{ $questionCategory->name }}
                                 </a>
                                 @endif
-                                <span class="badge bg-primary rounded-pill">
+                                <span class="badge rounded-pill" style="background:#969494">
                                     {{ $questionCategory->questions()->count() }}
                                 </span>
                             </li>

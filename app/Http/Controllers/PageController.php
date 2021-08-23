@@ -96,7 +96,11 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Page::where('id', $id)->firstOrFail()->delete();
+
+        return redirect()
+        ->route('admin.page.index')
+        ->with('success', 'page deleted successfully');
     }
 
     public function getSubCategories($id)

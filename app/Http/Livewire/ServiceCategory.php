@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class ServiceCategory extends Component
 {
-
     public $active = '';
     public $name;
     public $is_collapsed = true;
@@ -36,5 +35,12 @@ class ServiceCategory extends Component
     public function toggle_is_collapsed()
     {
         $this->is_collapsed = !$this->is_collapsed;
+    }
+
+    public function delete($id)
+    {
+        ModelsServiceCategory::where('id', $id)->firstOrFail()->delete();
+        
+        $this->emit('showSubCategory', '');
     }
 }

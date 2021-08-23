@@ -15,4 +15,20 @@ class ServiceCategory extends Model
     {
         return $this->hasMany(ServiceSubCategory::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            if ($category->serviceSubCategories) {
+                $category->serviceSubCategories()->each(function ($sub_category) use ($category) {
+                    $sub_category->delete();
+                    Page::where('main_category_id', $category->id)
+                        ->where('sub_category_id', $sub_category->id)
+                        ->delete();
+                });
+            }
+        });
+    }
 }

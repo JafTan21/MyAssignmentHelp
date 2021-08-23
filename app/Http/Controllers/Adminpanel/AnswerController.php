@@ -97,6 +97,10 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Answer::where('id', $id)->firstOrFail()->delete();
+
+        // return redirect()
+        // ->route('admin.question.index')
+        // ->with('success', 'Updated.');
     }
 }

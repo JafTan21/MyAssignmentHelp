@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                         <label for="" class="">Answer:</label>
-                        <textarea type="text" class="form-control" name="answer" required id="editor">
+                        <textarea type="text" class="form-control" name="answer" id="editor">
                             {!! $answer->answer !!}
                         </textarea>
                     </div>

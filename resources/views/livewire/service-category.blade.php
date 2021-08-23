@@ -19,9 +19,35 @@
 
     <ul class="list-group">
         @forelse ($serviceCategories as $serviceCategory)
-        <li wire:click="openSubCategoryOf({{ $serviceCategory->id }})"
-            class="list-group-item {{ $active == $serviceCategory->id ? 'active' : '' }}" style="cursor: pointer;">
-            {{ $serviceCategory->name }}
+        <li class="list-group-item  {{ $active == $serviceCategory->id ? 'bg-info' : '' }}" style="cursor: pointer;
+         padding: 0;
+         text-align: center;
+    background: transparent;
+         ">
+            <div class="row">
+
+                <div class="col-6">
+                    <button wire:click="openSubCategoryOf({{ $serviceCategory->id }})" type="button"
+                        class="btn {{ $active == $serviceCategory->id ? 'btn-info' : '' }}">
+                        {{ $serviceCategory->name }}
+                    </button>
+                </div>
+                <div class="col-6">
+
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button"
+                            class="btn {{ $active == $serviceCategory->id ? 'btn-info' : '' }} dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <button wire:click="delete('{{ $serviceCategory->id }}')"
+                                class="dropdown-item bg-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </li>
         @empty
         <li class="list-group-item">no service found</li>

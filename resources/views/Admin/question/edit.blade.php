@@ -27,11 +27,10 @@
                     </div>
                     <div class="form-group row">
                         <label>Question category: </label>
-                        <select name="question_categories_id" required class="form-control">
-                            @foreach (\App\Models\QuestionCategory::all() as $category)
-                            <option value="{{ $category->id }}"
-                                {{ $question->question_categories_id == $category->id ? 'selected' : ''}}>
-                                {{ $category->name }}</option>
+                        <select name="question_category_id" required class="form-control">
+                            @foreach (\App\Models\QuestionCategory::pluck('id', 'name') as $name => $id)
+                            <option value="{{ $id }}" {{ $question->question_category_id == $id ? 'selected' : ''}}>
+                                {{ $name }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -25,4 +25,17 @@ class QuestionCategory extends Model
     {
         return Storage::disk('public_htmls')->exists('question-category/' . $this->slug . '.html');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            if ($category->questions) {
+                $category->questions()->each(function ($question) {
+                    $question->delete();
+                });
+            }
+        });
+    }
 }

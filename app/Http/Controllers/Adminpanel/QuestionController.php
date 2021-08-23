@@ -8,6 +8,8 @@ use App\Http\Requests\Adminpanel\UpdateQuestionRequest;
 use App\Models\Question;
 use App\Services\StaticPageGenerator;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\QuestionImport;
 
 class QuestionController extends Controller
 {
@@ -19,7 +21,7 @@ class QuestionController extends Controller
     public function index()
     {
         return view('Admin.question.index', [
-            'questions' => Question::all(),
+            'questions' => Question::with(['answer', 'questionCategory'])->get(),
         ]);
     }
 
@@ -96,7 +98,11 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Question::where('id', $id)->firstOrFail()->delete();
+
+        return redirect()
+        ->route('admin.question.index')
+        ->with('success', 'Deleted the question.');
     }
 
     public function GenerateStaticPage($question_slug)
@@ -119,5 +125,12 @@ class QuestionController extends Controller
         }
 
         return redirect()->back()->with($data);
+    }
+
+    public function import()
+    {
+        Excel::import(new QuestionImport, 'questions.xlsx');
+        
+        return "All done";
     }
 }

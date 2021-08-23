@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page-header')
-Question categories
+Questions
 @endsection
 
 @section('content')
@@ -44,6 +44,9 @@ Question categories
                                         <th class="">
                                             Static page
                                         </th>
+                                        <th class="">
+                                            Delete
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="">
@@ -61,7 +64,7 @@ Question categories
                                         <td class="">
                                             <a href="{{ route('admin.question.edit', $question->id) }}"
                                                 class="text-info">
-                                                {!! $question->description !!}
+                                                {!! substr($question->description, 0, 50) !!}
                                             </a>
                                         </td>
                                         <td class="">
@@ -71,10 +74,10 @@ Question categories
                                             {{ $question->questionCategory->name }}
                                         </td>
                                         <td class="">
-                                            @if ($question->answer)
+                                            @if ($question->answer && $question->answer->answer)
                                             <a href="{{ route('admin.answer.edit', $question->answer->id) }}"
                                                 class="text-info">
-                                                {!! $question->answer->answer !!}
+                                                {!! substr($question->answer->answer, 0, 50) !!}...
                                             </a>
                                             @else
                                             <a href="{{ route('admin.answer.create', ['question'=>$question]) }}"
@@ -94,6 +97,16 @@ Question categories
                                                 No. Generate now?
                                             </a>
                                             @endif
+                                        </td>
+                                        <td class="">
+                                            <form method="POST"
+                                                action="{{ route('admin.question.destroy', $question->id) }}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

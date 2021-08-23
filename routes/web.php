@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Adminpanel\QuestionController;
 use App\Http\Controllers\AssignmentRequest;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Userpanel\PageController;
@@ -62,10 +63,13 @@ Route::as('userpanel.')
             $serviceCategories = ServiceCategory::with([
                 'serviceSubCategories',
             ])->get();
-            $questionCategories = QuestionCategory::with([
-                'questions'
-            ])->get();
+            $questionCategories = QuestionCategory::get();
             $pages = Page::all();
+
+            // with([
+            //     'questions'
+            // ])->
+
             return response()->json([
                 'headerContents' => response()->view('layouts.parts.user.header-contents', [
                     'serviceCategories' => $serviceCategories,
@@ -83,6 +87,8 @@ Route::as('userpanel.')
 
 Route::post('/upload', [ImageController::class, 'store'])
     ->name('image.store');
+
+    Route::get('/import', [QuestionController::class, 'import']);
 
 require __DIR__ . '/admin.php';
 

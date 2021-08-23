@@ -35,6 +35,9 @@ Question categories
                                         <th class="">
                                             Static page
                                         </th>
+                                        <th class="">
+                                            Delete
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="">
@@ -63,6 +66,18 @@ Question categories
                                                 No. Generate now?
                                             </a>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <form
+                                                onsubmit="return confirm('All questions and answers of this category will be deleted. Are you sure?')"
+                                                method="POST"
+                                                action="{{ route('admin.questionCategory.destroy', $questionCategory->id) }}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

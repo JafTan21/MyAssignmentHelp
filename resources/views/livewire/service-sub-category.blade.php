@@ -29,10 +29,34 @@
     </div>
     <ul class="list-group">
         @forelse ($subCategories as $subCategory)
-        <li class="list-group-item">
-            {{ $subCategory->name }}
-            (Total page: {{ $pages->where('main_category_id', $serviceCategoryId)
-            ->where('sub_category_id', $subCategory->id)->count() }})
+        <li class="list-group-item" style="cursor: pointer;
+            padding: 0;
+            text-align: center;
+       background: transparent;
+            ">
+            <div class="row">
+
+                <div class="col-6">
+                    <button type="button" class="btn">
+                        {{ $subCategory->name }} (Total page: {{ $pages->where('main_category_id', $serviceCategoryId)
+                           ->where('sub_category_id', $subCategory->id)->count() }})
+                    </button>
+                </div>
+                <div class="col-6">
+
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <button wire:click="delete('{{ $subCategory->id }}')"
+                                class="dropdown-item bg-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </li>
         @empty
         <li class="list-group-item bg-warning">No sub category found</li>

@@ -28,7 +28,16 @@
             </div>
         </div>
         <div class="card-body">
+
+            <div style=" 
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-size: 15px;">
+                {!! $question->description !!}
+            </div>
+            <hr>
             <div style="font-size: 20px;">
+                <div class="text-success">Answer: </div>
                 {!! $question->answer->answer ?? "<div class='alert alert-danger'>
                     No answer found
                 </div>

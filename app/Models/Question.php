@@ -14,6 +14,7 @@ class Question extends Model
     protected $fillable = [
         'title',
         'slug',
+        'description',
         'question_category_id',
         'others',
         'has_static_page'
@@ -32,5 +33,16 @@ class Question extends Model
     public function getStaticPageExistsAttribute()
     {
         return Storage::disk('public_htmls')->exists('question/' . $this->slug . '.html');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($question) {
+            if ($question->answer) {
+                $question->answer->delete();
+            }
+        });
     }
 }

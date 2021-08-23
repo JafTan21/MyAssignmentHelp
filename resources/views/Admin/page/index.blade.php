@@ -39,6 +39,8 @@ All pages
                                             Sub Category </th>
                                         <th class="">
                                             Static page </th>
+                                        <th class="">
+                                            Delete </th>
                                     </tr>
                                 </thead>
                                 <tbody class="">
@@ -69,6 +71,15 @@ All pages
                                                 No. Generate now?
                                             </a>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <form method="POST" action="{{ route('admin.page.destroy', $page->id) }}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

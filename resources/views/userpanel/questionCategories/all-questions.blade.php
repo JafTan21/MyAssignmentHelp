@@ -13,7 +13,7 @@
     }
 </style>
 <div class="container my-5 d-flex justify-content-center">
-    <div class="card shadow col-md-8">
+    <div class="card shadow col-md-10">
         <div class="card-header">
             <div class="heading p-0">
                 <i class="far fa-question-circle"></i>
@@ -37,15 +37,23 @@
                 @forelse ( $questionCategory->questions as $question)
                 <ul class="list-group p-0 m-0 mt-3 col-md-8 hvr-float">
                     <li class="list-group-item ">
-                        @if ($question->staticPageExists)
-                        <a href="{{ '/question/'.$question->slug.'.html' }}" class="">
-                            {{ $question->title }}
-                        </a>
-                        @else
-                        <a href="{{ route('userpanel.question', $question->slug) }}" class="">
-                            {{ $question->title }}
-                        </a>
-                        @endif
+                        @php
+                        if ($question->staticPageExists) {
+                        $href = '/question/'.$question->slug.'.html';
+                        } else {
+                        $href = route('userpanel.question', $question->slug);
+                        }
+                        @endphp
+                        <h4>
+                            <a href="{{ $href }}" class="text-dark">
+                                {!! $question->title !!}
+                            </a>
+                        </h4>
+                        <h6 class="text-dark" style="
+    padding-top: 7px;
+                        ">
+                            {!! substr($question->description, 0, 100) !!}...
+                        </h6>
                     </li>
                 </ul>
                 @empty

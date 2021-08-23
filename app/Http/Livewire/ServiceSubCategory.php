@@ -8,10 +8,10 @@ use Livewire\Component;
 
 class ServiceSubCategory extends Component
 {
-
     public $serviceCategoryId;
     public $subCategories;
-    public $name, $slug;
+    public $name;
+    public $slug;
     public $is_collapsed = true;
     public $error;
     public $pages;
@@ -38,7 +38,6 @@ class ServiceSubCategory extends Component
 
     public function saveNewSubServiceCategory()
     {
-
         if (ModelsServiceSubCategory::where('slug', $this->slug)->count() > 0) {
             $this->error = 'Slug is already taken';
             return;
@@ -58,5 +57,10 @@ class ServiceSubCategory extends Component
     public function toggle_is_collapsed()
     {
         $this->is_collapsed = !$this->is_collapsed;
+    }
+
+    public function delete($id)
+    {
+        ModelsServiceSubCategory::where('id', $id)->firstOrFail()->delete();
     }
 }

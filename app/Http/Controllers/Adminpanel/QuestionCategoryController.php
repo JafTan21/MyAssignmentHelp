@@ -96,7 +96,11 @@ class QuestionCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        QuestionCategory::where('id', $id)->firstOrFail()->delete();
+
+        return redirect()
+        ->route('admin.questionCategory.index')
+        ->with('success', 'Deleted the category.');
     }
 
     public function GenerateStaticPage($question_category_slug)
