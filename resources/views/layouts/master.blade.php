@@ -54,7 +54,7 @@
         @yield('content')
     </main>
 
-    @include('layouts.parts.user.chat')
+   {{--  @include('layouts.parts.user.chat') --}}
     {{-- @include('layouts.parts.user.footer') --}}
     <div id="footer"></div>
 

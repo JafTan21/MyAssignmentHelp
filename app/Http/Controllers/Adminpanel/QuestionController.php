@@ -21,7 +21,7 @@ class QuestionController extends Controller
     public function index()
     {
         return view('Admin.question.index', [
-            'questions' => Question::with(['answer', 'questionCategory'])->get(),
+            'questions' => Question::with(['answer', 'questionCategory'])->paginate(10),
         ]);
     }
 
