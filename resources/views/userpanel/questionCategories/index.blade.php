@@ -5,14 +5,14 @@
     
 
 <div style="display: flex; 
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;    
     flex-wrap: wrap;">
                 @for ($i = ord('a'); $i <= ord('z'); $i++) @if($questionCategories->filter(
                     fn ($questionCategory, $key) => str_starts_with(strtolower($questionCategory->name),chr($i))
                     )->count() > 0)
 
-                    <div class="d-flex" style="margin: 20px 0; width: 300px; height: {{ 
+                    <div class="d-flex" style="margin: 20px; min-width: 330px; height: {{ 
 
 $questionCategories->filter(
                             fn ($questionCategory, $key) => str_starts_with(strtolower($questionCategory->name),

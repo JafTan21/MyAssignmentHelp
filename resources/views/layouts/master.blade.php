@@ -54,7 +54,7 @@
         @yield('content')
     </main>
 
-   {{--  @include('layouts.parts.user.chat') --}}
+    @include('layouts.parts.user.chat')
     {{-- @include('layouts.parts.user.footer') --}}
     <div id="footer"></div>
 
@@ -78,6 +78,22 @@
 @endauth
 
     @yield('scripts')
+
+
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/60fcdd2dd6e7610a49acdd09/1fbdrvuuh';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 
 </html>
