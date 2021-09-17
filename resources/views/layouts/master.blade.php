@@ -71,8 +71,8 @@
     </script>
 
     {{-- custom js --}}
-    <script src="{{ asset('js/userpanel/staticpage.min.js') }}"></script>
-    <script src="{{ asset('js/userpanel/homepage.min.js') }}"></script>
+    <script src="{{ asset('js/userpanel/staticpage.js') }}"></script>
+    <script src="{{ asset('js/userpanel/homepage.js') }}"></script>
 @auth
 <script src="{{ asset('js/userpanel/chat.js') }}"></script>
 @endauth

@@ -34,11 +34,12 @@ class GenerateSitemap extends Command
     public function handle()
     {
         // modify this to your own needs
-        Sitemap::create(config('app.url'))
-            ->add(Question::all())
-            ->add(ServiceCategory::all())
-            ->add(ServiceSubCategory::all())
-            ->add(Page::all())
-            ->writeToFile(public_path('sitemap.xml'));
+        $sitemap=  Sitemap::create(config('app.url'));
+        Question::select('slug')->get()->each(fn ($question) => $sitemap->add($question->slug));
+        ServiceSubCategory::select('slug')->get()->each(fn ($ServiceSubCategory) => $sitemap->add($ServiceSubCategory->slug));
+        Page::select('slug')->get()->each(fn ($page) => $sitemap->add($page->slug));
+        // ->add(ServiceCategory::all())
+            
+        $sitemap->writeToFile(public_path('sitemap.xml'));
     }
 }

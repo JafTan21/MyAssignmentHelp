@@ -14,16 +14,12 @@ class ServiceSubCategorySeeder extends Seeder
      */
     public function run()
     {
-        ServiceSubCategory::create([
-            'name' => 'First sub Category',
-            'service_category_id' => 1,
-            'slug' => 'slug-1'
-        ]);
-
-        ServiceSubCategory::create([
-            'name' => 'Second sub Category',
-            'service_category_id' => 1,
-            'slug' => 'slug-2'
-        ]);
+        for ($i=0; $i<100; $i++) {
+            ServiceSubCategory::create([
+                'name' => 'sub Category' . $i,
+                'service_category_id' => rand(1, 20),
+                'slug' => 'sub-Category-' . $i
+            ]);
+        }
     }
 }

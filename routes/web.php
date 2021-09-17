@@ -60,15 +60,20 @@ Route::as('userpanel.')
         Route::resource('assignmentRequest', AssignmentRequest::class);
 
         Route::get('get-header-footer', function () {
-            $serviceCategories = ServiceCategory::with([
-                'serviceSubCategories',
-            ])->get();
-            $questionCategories = QuestionCategory::get();
-            $pages = Page::all();
-
-            // with([
-            //     'questions'
-            // ])->
+            $serviceCategories = cache()->remember('serviceCategories', 5000, function () {
+                return  ServiceCategory::select('name', 'id')
+                ->with([
+                    'serviceSubCategories'=>function ($query) {
+                        $query->select('service_category_id', 'id', 'name');
+                    }
+                ])->get();
+            });
+            $questionCategories = cache()->remember('questionCategories', 5000, function () {
+                return QuestionCategory::select('slug', 'name')->get();
+            });
+            $pages = cache()->remember('pages', 5000, function () {
+                return Page::select('main_category_id', 'sub_category_id', 'slug', 'title')->get();
+            });
 
             return response()->json([
                 'headerContents' => response()->view('layouts.parts.user.header-contents', [

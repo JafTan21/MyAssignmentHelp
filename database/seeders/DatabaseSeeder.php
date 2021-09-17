@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ServiceCategorySeeder::class,
             ServiceSubCategorySeeder::class,
+            ServiceSeeder::class,
             QuestionCategorySeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
